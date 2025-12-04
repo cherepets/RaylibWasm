@@ -7,31 +7,9 @@ I've followed [DotnetRaylibWasm](https://github.com/stanoddly/DotnetRaylibWasm) 
 > [!IMPORTANT]
 > Please read the instructions below for building and publishing the project, as this may affect its functionality and cause unexpected errors.
 
-## .Net 9+
+## Supported .Net versions
 
-To build correctly with .Net 9 and later, you may need to slightly modify the main.js file to use new dotnet `runMain` syntax:
-
-```js
-import { dotnet } from './_framework/dotnet.js'
-
-const { getAssemblyExports, getConfig, runMain } = await dotnet
-    .withDiagnosticTracing(false)
-    .create();
-
-const config = getConfig();
-const exports = await getAssemblyExports(config.mainAssemblyName);
-
-dotnet.instance.Module['canvas'] = document.getElementById('canvas');
-
-function mainLoop() {
-    exports.RaylibWasm.Application.UpdateFrame();
-
-    window.requestAnimationFrame(mainLoop);
-}
-
-await runMain();
-window.requestAnimationFrame(mainLoop);
-```
+The project has been updated to .Net 10 (main), version .Net 8 is available in the "net-8" branch.
 
 ## Setup
 
