@@ -1,13 +1,23 @@
 ﻿<!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>RaylibWasm</title>
+<head>
+    <meta charset="utf-8" />
+    <title>RaylibWasm</title>
 
-        <link rel="modulepreload" href="./main.js" />
-        <link rel="modulepreload" href="./_framework/dotnet.js" />
-    </head>
+    <link rel="modulepreload" href="./main.js" />
+    <link rel="modulepreload" href="./_framework/dotnet.js" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: black;
+        }
+    </style>
+</head>
     <body>
         <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
         

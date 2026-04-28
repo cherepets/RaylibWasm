@@ -7,11 +7,16 @@ const { getAssemblyExports, getConfig, runMain } = await dotnet
 const config = getConfig();
 const exports = await getAssemblyExports(config.mainAssemblyName);
 
-dotnet.instance.Module['canvas'] = document.getElementById('canvas');
+const canvas = document.getElementById('canvas');
+dotnet.instance.Module['canvas'] = canvas;
 
 function mainLoop() {
-    exports.RaylibWasm.Application.UpdateFrame();
-
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    exports.RaylibWasm.Application.UpdateFrame(
+        window.innerWidth,
+        window.innerHeight,
+        window.devicePixelRatio || 1);
     window.requestAnimationFrame(mainLoop);
 }
 
