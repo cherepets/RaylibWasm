@@ -1,20 +1,16 @@
 # RaylibWasm
 
-.Net 8+ webasssembly starter project using raylib-cs nuget.
+.Net 10 WebAsssembly starter project using raylib-cs nuget based on https://github.com/Kiriller12/RaylibWasm.
 
-I've followed [DotnetRaylibWasm](https://github.com/stanoddly/DotnetRaylibWasm) example project and some official Microsoft documentation.
-
-> [!IMPORTANT]
-> Please read the instructions below for building and publishing the project, as this may affect its functionality and cause unexpected errors.
-
-## Supported .Net versions
-
-> [!IMPORTANT]
-> The project has been updated to .Net 10 ("main" branch), .Net 8 version is available in the "net-8" branch.
+## KEY IMPROVEMENTS
+- Added IIS Express to launchSettings.json to be able to run it from Visual Studio by hitting F5
+- Made canvas occupy the whole page and dpi aware (text is not blurry on High DPI displays anymore)
+- Few extra properties in .csproj for things I consider recommended and things that can reduce bundle size
+- Changed TargetFramework to net10.0-browser to avoid CA1416: This call site is reachable on all platforms. 'JSExportAttribute' is only supported on: 'browser'.
 
 ## Setup
 
-You must have .Net 8+ installed before start.
+You must have .Net 10 installed before start.
 
 Then install wasm toolset:
 
@@ -47,7 +43,7 @@ dotnet tool install --global dotnet-serve
 
 And then just call this command to start web server for your build:
 ```
-dotnet serve --mime .wasm=application/wasm --mime .js=text/javascript --mime .json=application/json --directory RaylibWasm\bin\Release\net8.0\browser-wasm\AppBundle\
+dotnet serve --mime .wasm=application/wasm --mime .js=text/javascript --mime .json=application/json --directory RaylibWasm\bin\Release\net10.0-browser\browser-wasm\AppBundle\
 ```
 
 While server is running you can use publish command to update your files without any need to restart server.
@@ -62,6 +58,7 @@ This project is not perfect, so I would welcome your suggestions and PR requests
 
 ## Thanks
 
+- to [Kiriller12](https://github.com/Kiriller12) for his awesome project template
 - to [Ray](https://github.com/raysan5) and all [raylib](https://github.com/raysan5/raylib) contributors for such a wonderful lib
 - to [ChrisDill](https://github.com/ChrisDill) for [raylib C# bindings](https://github.com/ChrisDill/Raylib-cs)
 - to [stanoddly](https://github.com/stanoddly) for dotnet webassembly [example project](https://github.com/stanoddly/DotnetRaylibWasm)
